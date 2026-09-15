@@ -48,7 +48,7 @@ AI Web Search Agent – Workflow Explanation
    
    • The user's message is then passed to the AI Agent.
 
-3. AI Agent – Core Decision Maker
+2. AI Agent – Core Decision Maker
    
    • The AI Agent is the central component of the workflow.
    
@@ -58,7 +58,7 @@ AI Web Search Agent – Workflow Explanation
    
    • This makes the workflow agentic because the agent can autonomously select the appropriate tool based on the user's request.
 
-5. OpenAI Chat Model – Language Intelligence
+3. OpenAI Chat Model – Language Intelligence
    
    • The OpenAI Chat Model is connected to the AI Agent.
    
@@ -66,7 +66,7 @@ AI Web Search Agent – Workflow Explanation
    
    • It also helps the agent reason about which tool should be used for a particular task.
 
-8. Simple Memory – Conversation Context
+4. Simple Memory – Conversation Context
    
    • Simple Memory is connected to the AI Agent to maintain conversation context.
    
@@ -74,7 +74,7 @@ AI Web Search Agent – Workflow Explanation
    
    • This makes the interaction more conversational instead of treating every message as a completely new request.
 
-10. Calculator – Mathematical Tool
+5. Calculator – Mathematical Tool
     
    • The Calculator is connected to the AI Agent as an external tool.
    
@@ -82,7 +82,7 @@ AI Web Search Agent – Workflow Explanation
    
    • For example, for "Calculate 9876 × 543", the agent can use the Calculator and then return the result to the user.
 
-12. Google Search with SerpAPI – Web Search Tool
+6. Google Search with SerpAPI – Web Search Tool
     
    • Google Search through SerpAPI is connected to the AI Agent as another external tool.
    
@@ -94,7 +94,7 @@ AI Web Search Agent – Workflow Explanation
    
    • For example, if the user asks "What are the latest AI developments?", the agent can automatically generate an appropriate search query and send it to SerpAPI.
 
-14. System Instructions – Agent Behavior
+7. System Instructions – Agent Behavior
     
    • A system instruction is provided to guide the AI Agent's behavior.
    
@@ -102,7 +102,7 @@ AI Web Search Agent – Workflow Explanation
    
    • For general questions that do not require web access, the agent can answer directly using the language model.
 
-16. Automatic Tool Selection
+8. Automatic Tool Selection
     
    • The main feature of the workflow is automatic tool selection.
    
@@ -115,7 +115,7 @@ AI Web Search Agent – Workflow Explanation
        → Latest/current information → Google Search
        → General knowledge → OpenAI Chat Model
 
-18. Complete Workflow
+9. Complete Workflow
     
    • User sends a message.
 
@@ -138,7 +138,7 @@ AI Web Search Agent – Workflow Explanation
    • The response is returned to the user through the chat interface.
    
 
-21. Why This Is an AI Agent
+10. Why This Is an AI Agent
     
    • Unlike a basic chatbot, the system does not only generate text responses.
    
