@@ -1,0 +1,176 @@
+{
+  "name": "first ai agent",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "85c77b3b-f583-4256-aad7-0a6cf21190fe",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "4f6efb09-b053-4847-b8df-3c73c54498b8"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a helpful general-purpose AI assistant.\n\nYou have access to a Google Search tool.\n\nAutomatically use the Google Search tool whenever the user's question needs current, latest, live, real-time, or web-based information.\n\nExamples:\n- Current weather → search the web\n- Latest news → search the web\n- Current price → search the web\n- Recent technology updates → search the web\n- Current events → search the web\n\nFor questions that you can answer reliably from your existing knowledge, answer directly without searching.\n\nNever ask the user to manually run the search tool. Decide yourself when the Google Search tool is needed."
+        }
+      },
+      "id": "05be4f6b-d9c6-4494-9fbf-20c5d0ab553a",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        224,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-5-mini",
+          "cachedResultName": "gpt-5-mini",
+          "cachedResultUrl": ""
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "id": "7f6837f8-b99c-4678-bccd-f49096d95859",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        16,
+        208
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": null,
+          "name": "Gateway credits",
+          "__aiGatewayManaged": true
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "73bcc18d-f000-47cf-a986-cffd03ab29a2",
+      "name": "Simple Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        240,
+        208
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "e3cf795c-e169-4ec5-a64a-894a3656b814",
+      "name": "Calculator",
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        368,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "q": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Search_Query__q_', `\"Generate a concise Google search query based on the user's request. Use the user's exact topic, names, location, and time-sensitive terms when relevant.\"`, 'string') }}",
+        "additionalFields": {},
+        "requestOptions": {}
+      },
+      "id": "c8beefb2-7043-458b-a04f-190042ec4edd",
+      "name": "Google search in SerpApi",
+      "type": "n8n-nodes-serpapi.serpApiTool",
+      "typeVersion": 1,
+      "position": [
+        592,
+        224
+      ],
+      "credentials": {
+        "serpApi": {
+          "id": "JiFap40M8QBAjTGE",
+          "name": "SerpApi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google search in SerpApi": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "3454dd8f-5942-445b-8d1a-b543a3a0ea06",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "a1105abf760e8843b38e6a1f49a06dc7c2d3763f2a5b8fca8f601cdf474a8ba6"
+  },
+  "nodeGroups": [],
+  "id": "fYDByN5exrILvN61",
+  "tags": []
+}
